@@ -36,7 +36,7 @@ window.onload = function(){
           div.setAttribute('positionx', i);
           div.addEventListener('click', play);
           row.appendChild(div);
-        }board.appendChild(row);
+        } board.appendChild(row);
       }
     }
   });
@@ -50,12 +50,12 @@ window.onload = function(){
           this.setAttribute('class', 'cardx');
           this.setAttribute('play', 'X')
           this.innerHTML = playX;
+          currentPlayer = "O";
           var posy = parseInt(this.getAttribute('positiony'));
           var posx = parseInt(this.getAttribute('positionx'));
           playedBoard[posy][posx] = playX;
-          currentPlayer = "O";
+          // console.log(playedBoard);
           checkWinner();
-
         } else if (currentPlayer === "O"){
           this.setAttribute('class', 'cardo');
           this.setAttribute('play', 'O')
@@ -64,6 +64,7 @@ window.onload = function(){
           var posy = parseInt(this.getAttribute('positiony'));
           var posx = parseInt(this.getAttribute('positionx'));
           playedBoard[posy][posx] = playO;
+          // console.log(playedBoard);
           checkWinner();
         }  else {
           alert ("something has gone wrong");
@@ -76,6 +77,7 @@ window.onload = function(){
 }
 
 function checkWinner(){
+  console.log(playedBoard);
   if
    ( playedBoard[0][0]  === playedBoard[0][1] &&
      playedBoard[0][0]  === playedBoard[0][2] &&
@@ -129,14 +131,16 @@ function checkWinner(){
 
 
   //check full board
-  for (var m =0; m < playedBoard.length ; m++){
-    for (var n = 0; n <playedBoard[m].length; n++){
-      if(playedBoard[m][n]===null){
-        return isOver;
+  if(!isOver){
+    for (var m =0; m < playedBoard.length ; m++){
+      for (var n = 0; n <playedBoard[m].length; n++){
+        if(playedBoard[m][n]===null){
+          return isOver;
+        }
       }
     }
+     itIsOver('It is a tie!');
   }
-   itIsOver('It is a tie!');
 }
 
 function itIsOver (winner){
