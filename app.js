@@ -29,6 +29,7 @@ window.onload = function(){
         row.setAttribute('class', 'row');
         for (var i = 0; i < 3; i++){
           var div = document.createElement('div');
+          div.innerHTML ='&nbsp;'
           div.setAttribute('class','cell');
           div.setAttribute('played','false');
           div.setAttribute('positiony', j);
