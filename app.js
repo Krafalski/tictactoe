@@ -12,6 +12,7 @@ var playedBoard =
 
 window.onload = function(){
   start.addEventListener('click', function(){
+    start.className = "invisible";
   var container = document.getElementById('container');
   var board = document.createElement('div');
   board.setAttribute('id','board');
@@ -54,7 +55,6 @@ window.onload = function(){
           var posy = parseInt(this.getAttribute('positiony'));
           var posx = parseInt(this.getAttribute('positionx'));
           playedBoard[posy][posx] = playX;
-          // console.log(playedBoard);
           checkWinner();
         } else if (currentPlayer === "O"){
           this.setAttribute('class', 'cardo');
@@ -64,7 +64,6 @@ window.onload = function(){
           var posy = parseInt(this.getAttribute('positiony'));
           var posx = parseInt(this.getAttribute('positionx'));
           playedBoard[posy][posx] = playO;
-          // console.log(playedBoard);
           checkWinner();
         }  else {
           alert ("something has gone wrong");
@@ -147,10 +146,12 @@ function itIsOver (winner){
   if (winner === 'It is a tie!'){
     swal("It's a tie!");
     start.innerHTML = "Play again?";
+    start.className ="";
     isOver = true;
   } else{
   swal('Winner is ' +  winner);
   start.innerHTML = "Play again?";
+  start.className ="";
   isOver = true;
   }
 }

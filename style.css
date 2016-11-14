@@ -99,6 +99,9 @@ div.cardx {
   border-radius: 2px;
 }
 
+.invisible {
+  display:none;
+}
 
 .pink{
   color:rgba(202, 5, 77, 1);
